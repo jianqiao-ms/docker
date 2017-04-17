@@ -8,6 +8,7 @@ RUN wget https://packages.jianqiao.tk/jre-7u80-linux-x64.tar.gz && tar zxvf jre-
     mv jre1.7.0_80 /opt/ && ln -s /opt/jre1.7.0 /usr/local/jre && \
     echo 'JAVA_HOME=/usr/local/jre' > /etc/profile.d/jre.sh && \
     echo 'CLASSPATH=$JAVA_HOME/lib' >> /etc/profile.d/jre.sh && \
-    echo 'pathmunge $JAVA_HOME/bin' >> /etc/profile.d/jre.sh
+    echo 'pathmunge $JAVA_HOME/bin' >> /etc/profile.d/jre.sh && \
+    rm -rf jre1.7.0_80 && rm -rf jre-7u80-linux-x64.tar.gz
 
 CMD ["/bin/bash"]
