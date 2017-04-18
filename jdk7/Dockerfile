@@ -3,10 +3,10 @@ FROM centos:latest
 
 MAINTAINER Gollum 'jianqiao.ms@foxmail.com'
 
-ENV PKG jre-7u80-linux-x64.tar.gz
-ENV DIR jre1.7.0_80
-ENV DST /usr/local/jre
-ENV PROFILE /etc/profile.d/jre.sh
+ENV PKG jdk-7u80-linux-x64.tar.gz
+ENV DIR jdk1.7.0_80
+ENV DST /usr/local/jdk
+ENV PROFILE /etc/profile.d/jdk.sh
 
 RUN yum install -y wget
 RUN wget https://packages.jianqiao.tk/$PKG && tar zxvf $PKG && \
