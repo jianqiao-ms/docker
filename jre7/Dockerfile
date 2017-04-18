@@ -3,12 +3,17 @@ FROM centos:latest
 
 MAINTAINER Gollum 'jianqiao.ms@foxmail.com'
 
+ENV PKG jre-7u80-linux-x64.tar.gz
+ENV DIR jre1.7.0_80
+ENV DST /usr/local/jre
+ENV PROFILE /etc/profile.d/jre.sh
+
 RUN yum install -y wget
-RUN wget https://packages.jianqiao.tk/jre-7u80-linux-x64.tar.gz && tar zxvf jre-7u80-linux-x64.tar.gz && \
-    mv jre1.7.0_80 /opt/ && ln -s /opt/jre1.7.0 /usr/local/jre && \
-    echo 'JAVA_HOME=/usr/local/jre' > /etc/profile.d/jre.sh && \
-    echo 'CLASSPATH=$JAVA_HOME/lib' >> /etc/profile.d/jre.sh && \
-    echo 'pathmunge $JAVA_HOME/bin' >> /etc/profile.d/jre.sh && \
-    rm -rf jre1.7.0_80 && rm -rf jre-7u80-linux-x64.tar.gz
+RUN wget https://packages.jianqiao.tk/$PKG && tar zxvf $PKG && \
+    mv $DIR /opt/ && ln -s /opt/$DIR $DST && \
+    echo "JAVA_HOME=$DST" > $PROFILE && \
+    echo 'CLASSPATH=$JAVA_HOME/lib' >> $PROFILE && \
+    echo 'pathmunge $JAVA_HOME/bin' >> $PROFILE && \
+    rm -rf $PKG $DIR
 
 CMD ["/bin/bash"]
