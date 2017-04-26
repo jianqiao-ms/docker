@@ -21,5 +21,7 @@ RUN wget -O $PKG "$TOMCAT_TGZ_URL" && \
     echo "CATALINA_HOME=$DST" > $PROFILE && \
     echo 'pathmunge $CATALINA_HOME/bin' >> $PROFILE
 
+VOLUME /usr/local/tomcat/webapps/
 EXPOSE 8080
+
 CMD ["catalina.sh", "run"]
