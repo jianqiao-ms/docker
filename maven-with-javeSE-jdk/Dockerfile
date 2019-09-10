@@ -9,4 +9,6 @@ RUN curl -l -o apache-maven-3.6.2-bin.tar.gz http://apache.mirror.amaze.com.au/m
 tar zxvf apache-maven-3.6.2-bin.tar.gz && mv apache-maven-3.6.2 /opt && ln -snf  /opt/apache-maven-3.6.2 /usr/local/mvn && \
 echo 'pathmunge /usr/local/mvn/bin' > /etc/profile.d/mvn.sh && source /etc/profile
 
+ADD .m2 $HOME/
+
 CMD mvn -version
